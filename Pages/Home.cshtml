@@ -1,0 +1,693 @@
+﻿@page
+@model Portfolio.Pages.HomeModel
+@{
+    ViewData["Title"] = "Home";
+}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+    }
+
+
+    .hero {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 135, 191, 0.3), transparent 50%), radial-gradient(circle at 40% 20%, rgba(138, 180, 248, 0.2), transparent 50%); */
+            animation: gradientShift 15s ease infinite;
+        }
+
+    @@keyframes gradientShift {
+        0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        50% {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+    }
+
+    .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: float 20s infinite;
+    }
+
+    .particle:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+        animation-duration: 15s;
+    }
+
+    .particle:nth-child(2) {
+        left: 20%;
+        animation-delay: 2s;
+        animation-duration: 18s;
+    }
+
+    .particle:nth-child(3) {
+        left: 30%;
+        animation-delay: 4s;
+        animation-duration: 22s;
+    }
+
+    .particle:nth-child(4) {
+        left: 40%;
+        animation-delay: 1s;
+        animation-duration: 20s;
+    }
+
+    .particle:nth-child(5) {
+        left: 50%;
+        animation-delay: 3s;
+        animation-duration: 16s;
+    }
+
+    .particle:nth-child(6) {
+        left: 60%;
+        animation-delay: 5s;
+        animation-duration: 19s;
+    }
+
+    .particle:nth-child(7) {
+        left: 70%;
+        animation-delay: 2.5s;
+        animation-duration: 21s;
+    }
+
+    .particle:nth-child(8) {
+        left: 80%;
+        animation-delay: 4.5s;
+        animation-duration: 17s;
+    }
+
+    .particle:nth-child(9) {
+        left: 90%;
+        animation-delay: 1.5s;
+        animation-duration: 23s;
+    }
+
+    @@keyframes float {
+        0% {
+            transform: translateY(100vh) scale(0);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-100vh) scale(1);
+            opacity: 0;
+        }
+    }
+
+    .hero-container {
+        max-width: 1280px;
+        margin: auto;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-text {
+        animation: fadeInLeft 1s ease-out;
+    }
+
+    @@keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .hero-text .greeting {
+        display: inline-block;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        animation: slideDown 0.8s ease-out 0.2s both;
+    }
+
+    @@keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-text h1 {
+        font-size: 54px;
+        font-weight: 800;
+        color: white;
+        line-height: 1.2;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #fde68a;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .hero-text h2::before {
+            content: '';
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #fde68a, transparent);
+            display: inline-block;
+        }
+
+    .hero-text p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 520px;
+        margin-bottom: 35px;
+    }
+
+    .stats-row {
+        display: flex;
+        gap: 30px;
+        margin: 30px 0;
+    }
+
+    .stat-item {
+        text-align: left;
+    }
+
+    .stat-item .number {
+        font-size: 36px;
+        font-weight: 700;
+        color: white;
+        display: block;
+    }
+
+    .stat-item .label {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 5px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: 35px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 16px 32px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn.primary {
+        background: rgba(255, 255, 255, 0.95);
+        color: #6366f1;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn.primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn.outline {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .btn.outline:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-3px);
+    }
+
+
+    .hero-image {
+        display: flex;
+        justify-content: center;
+        animation: fadeInRight 1s ease-out 0.3s both;
+    }
+
+    @@keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .image-card {
+        position: relative;
+        width: 400px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: transform 0.4s ease;
+    }
+
+    .image-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    .image-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient( 45deg, transparent, rgba(255, 255, 255, 0.1), transparent );
+        transform: rotate(45deg);
+        animation: shimmer 3s infinite;
+    }
+
+    @@keyframes shimmer {
+        0% {
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+
+        100% {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+    }
+
+    .image-card img {
+        width: 85%;
+        height: 85%;
+        object-fit: cover;
+        border-radius: 20px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    
+    .floating-badge {
+        position: absolute;
+        bottom: 30px;
+        right: -20px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 25px;
+        border-radius: 50px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        animation: float-badge 3s ease-in-out infinite;
+        z-index: 2;
+    }
+
+    @@keyframes float-badge {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .floating-badge .badge-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .floating-badge .icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .floating-badge .text {
+        text-align: left;
+    }
+
+    .floating-badge .text .label {
+        font-size: 11px;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .floating-badge .text .value {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1f2937;
+    }
+
+    
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        animation: bounce 2s infinite;
+    }
+
+    @@keyframes bounce {
+        0%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        50% {
+            transform: translateX(-50%) translateY(10px);
+        }
+    }
+
+    .scroll-indicator .arrow {
+        width: 24px;
+        height: 24px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+   
+    @@media (max-width: 1024px) {
+        .hero-container {
+            grid-template-columns: 1fr;
+            gap: 60px;
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+        }
+
+        .hero-text h2 {
+            font-size: 22px;
+            justify-content: center;
+        }
+
+        .hero-text p {
+            margin: 0 auto 30px;
+        }
+
+        .stats-row {
+            justify-content: center;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+
+        .image-card {
+            width: 340px;
+            height: 420px;
+        }
+
+        .floating-badge {
+            right: 50%;
+            transform: translateX(50%);
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .hero-text h1 {
+            font-size: 36px;
+        }
+
+        .hero-text h2 {
+            font-size: 18px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+        }
+
+        .image-card {
+            width: 280px;
+            height: 360px;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            font-size: 14px;
+        }
+
+        .stats-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+    }
+
+    .success-popup {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .success-popup-content {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(18px);
+        border-radius: 20px;
+        padding: 30px 40px;
+        text-align: center;
+        color: white;
+        max-width: 420px;
+        border: 1px solid rgba(255,255,255,0.35);
+        box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+
+    .success-popup-content h3 {
+        margin-bottom: 10px;
+    }
+
+    .success-popup-content button {
+        margin-top: 20px;
+        padding: 10px 24px;
+        border-radius: 30px;
+        border: none;
+        background: #38bdf8;
+        color: #020617;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+</style>
+
+<section id="home" class="hero">
+
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="hero-container">
+
+        <div class="hero-text">
+            <span class="greeting">👋 Welcome to my portfolio</span>
+
+            <h1>Ayan Kumar Samanta</h1>
+
+            <h2>ASP.NET Core & .NET Developer</h2>
+
+            <p>
+                I build secure, scalable and user-friendly web applications
+                for enterprise and government systems using ASP.NET Core,
+                SQL Server and modern UI practices.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn primary">
+                    <span>View Work</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#contact" class="btn outline">
+                    <span>Contact Me</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="image-card">
+                <img src="~/images/profile.png" alt="Ayan Samanta" />
+
+                <div class="floating-badge">
+                    <div class="badge-content">
+                        <div class="icon">✓</div>
+                        <div class="text">
+                            <div class="label">Available for</div>
+                            <div class="value">Hire</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="arrow">↓</div>
+    </div>
+</section>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-popup" class="success-popup">
+        <div class="success-popup-content">
+            <h3>✅ Success</h3>
+            <p>@TempData["SuccessMessage"]</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+}
+
+<partial name="_About" />
+<partial name="_Experience" />
+<partial name="_Skills" />
+<partial name="_Portfolio" />
+<partial name="_Education" />
+<partial name="_Contact" />
+<script>
+    setTimeout(() => {
+        const popup = document.getElementById('success-popup');
+        if (popup) popup.style.display = 'none';
+    }, 3000);
+</script>

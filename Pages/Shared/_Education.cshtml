@@ -1,0 +1,506 @@
+﻿<style>
+
+    #education {
+        padding: 120px 20px;
+        background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+   
+    #education::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.08), transparent 70%);
+        border-radius: 50%;
+        animation: float-background 15s ease-in-out infinite;
+    }
+
+    #education::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -5%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(118, 75, 162, 0.06), transparent 70%);
+        border-radius: 50%;
+        animation: float-background 20s ease-in-out infinite reverse;
+    }
+
+    @@keyframes float-background {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+            transform: translate(30px, -30px) scale(1.1);
+        }
+    }
+
+
+    .education-container {
+        max-width: 1100px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+
+    #education h2 {
+        font-size: 56px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #1f2937 0%, #667eea 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInDown 1s ease-out;
+    }
+
+    @@keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #education h2::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        border-radius: 2px;
+    }
+
+
+    .education-subtitle {
+        text-align: center;
+        color: #6b7280;
+        font-size: 18px;
+        margin-bottom: 70px;
+        animation: fadeIn 1s ease-out 0.3s both;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+
+    .education-timeline {
+        position: relative;
+        padding: 40px 0;
+    }
+
+
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    .timeline-line::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        background: #667eea;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    }
+
+    .timeline-line::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 16px;
+        height: 16px;
+        background: #4C1D95;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.2);
+    }
+
+
+    .education-item {
+        position: relative;
+        margin-bottom: 60px;
+        animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .education-item:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+
+    .education-item:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    .education-item:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+
+    .education-item:nth-child(4) {
+        animation-delay: 0.8s;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .education-item:nth-child(odd) .education-content {
+        margin-right: calc(50% + 50px);
+        text-align: right;
+    }
+
+    .education-item:nth-child(even) .education-content {
+        margin-left: calc(50% + 50px);
+        text-align: left;
+    }
+
+    .education-content {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 24px;
+        padding: 35px 40px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        position: relative;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .education-content:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .timeline-dot {
+        position: absolute;
+        top: 30px;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        border: 4px solid white;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        z-index: 2;
+        transition: all 0.3s ease;
+    }
+
+    .education-item:nth-child(odd) .timeline-dot {
+        right: calc(50% - 10px);
+    }
+
+    .education-item:nth-child(even) .timeline-dot {
+        left: calc(50% - 10px);
+    }
+
+    .education-content:hover + .timeline-dot {
+        transform: scale(1.3);
+        box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.3);
+    }
+
+
+    .degree-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        transition: all 0.4s ease;
+    }
+
+    .education-content:hover .degree-icon {
+        transform: rotateY(360deg) scale(1.1);
+    }
+
+
+    .education-content h4 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 12px;
+        line-height: 1.4;
+    }
+
+
+    .institution {
+        font-size: 16px;
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .education-item:nth-child(odd) .institution {
+        justify-content: flex-end;
+    }
+
+    .institution::before {
+        content: '🎓';
+        font-size: 18px;
+    }
+
+    /* PERCENTAGE/CGPA */
+    .education-content p {
+        color: #6b7280;
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 8px 0;
+    }
+
+
+    .year-badge {
+        display: inline-block;
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 20px;
+        margin-top: 12px;
+    }
+
+
+    .achievement-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin-top: 15px;
+        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+    }
+
+        .achievement-badge::before {
+            content: '⭐';
+        }
+
+
+    @@media (max-width: 968px) {
+        .timeline-line {
+            left: 30px;
+        }
+
+            .timeline-line::before,
+            .timeline-line::after {
+                left: 50%;
+            }
+
+        .education-item:nth-child(odd) .education-content,
+        .education-item:nth-child(even) .education-content {
+            margin-left: 70px;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .education-item:nth-child(odd) .timeline-dot,
+        .education-item:nth-child(even) .timeline-dot {
+            left: 20px;
+            right: auto;
+        }
+
+        .education-item:nth-child(odd) .institution {
+            justify-content: flex-start;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        #education {
+            padding: 80px 20px;
+        }
+
+            #education h2 {
+                font-size: 40px;
+            }
+
+        .education-subtitle {
+            font-size: 16px;
+            margin-bottom: 50px;
+        }
+
+        .education-content {
+            padding: 25px 30px;
+        }
+
+            .education-content h4 {
+                font-size: 20px;
+            }
+
+        .degree-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        #education h2 {
+            font-size: 32px;
+        }
+
+        .timeline-line {
+            left: 20px;
+        }
+
+        .education-item:nth-child(odd) .education-content,
+        .education-item:nth-child(even) .education-content {
+            margin-left: 50px;
+        }
+
+        .education-item:nth-child(odd) .timeline-dot,
+        .education-item:nth-child(even) .timeline-dot {
+            left: 10px;
+        }
+
+        .education-content {
+            padding: 20px 25px;
+        }
+
+            .education-content h4 {
+                font-size: 18px;
+            }
+    }
+</style>
+
+<section id="education">
+    <div class="education-container">
+        <h2>Education & Certifications</h2>
+        <p class="education-subtitle">My academic journey and professional development</p>
+
+        <div class="education-timeline">
+            <!-- VERTICAL TIMELINE LINE -->
+            <div class="timeline-line"></div>
+            <div class="education-item">
+                <div class="education-content">
+                    <div class="degree-icon">📖</div>
+                    <h4>Secondary (X)</h4>
+                    <p class="institution">Swami Pranabananda Vidyapith</p>
+                    <p><strong>Percentage:</strong> 67.5%</p>
+                    <p>Successfully completed secondary education with focus on Science and Mathematics</p>
+                    <span class="year-badge">2014</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="education-item">
+                <div class="education-content">
+                    <div class="degree-icon">📚</div>
+                    <h4>Higher Secondary (XII) – Pure Science</h4>
+                    <p class="institution">Kalidhan Institution</p>
+                    <p><strong>Percentage:</strong> 67.8%</p>
+                    <p>Major Subjects: Physics, Chemistry, Mathematics, Computer Science</p>
+                    <span class="year-badge">2014 - 2016</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="education-item">
+                <div class="education-content">
+                    <div class="degree-icon">🎓</div>
+                    <h4>B.Tech – Electronics & Communication Engineering</h4>
+                    <p class="institution">Bankura Unnayani Institute Of Engineering</p>
+                    <p><strong>CGPA:</strong> 76.4%</p>
+                    <span class="year-badge">2016 - 2020</span>
+                    <span class="achievement-badge">Honors Graduate</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="education-item">
+                <div class="education-content">
+                    <div class="degree-icon">💻</div>
+                    <h4>Software Development Engineer in Test (SDET)</h4>
+                    <p class="institution">Kodnest, Bangalore</p>
+                    <p>Comprehensive training in test automation, software testing methodologies, and quality assurance practices</p>
+                    <span class="year-badge">Professional Certification</span>
+                    <span class="achievement-badge">Industry Certified</span>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.education-content').forEach(content => {
+        const dot = content.nextElementSibling;
+
+        content.addEventListener('mouseenter', () => {
+            if (dot && dot.classList.contains('timeline-dot')) {
+                dot.style.transform = 'scale(1.3)';
+                dot.style.boxShadow = '0 0 0 8px rgba(102, 126, 234, 0.3)';
+            }
+        });
+
+        content.addEventListener('mouseleave', () => {
+            if (dot && dot.classList.contains('timeline-dot')) {
+                dot.style.transform = 'scale(1)';
+                dot.style.boxShadow = '0 0 0 4px rgba(102, 126, 234, 0.2)';
+            }
+        });
+    });
+    const observeEducation = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    document.querySelectorAll('.education-item').forEach(item => {
+        observeEducation.observe(item);
+    });
+</script>

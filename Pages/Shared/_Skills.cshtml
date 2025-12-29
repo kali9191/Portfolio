@@ -1,0 +1,463 @@
+﻿<style>
+    #skills {
+        padding: 120px 20px;
+        background: linear-gradient(34deg, #667eea 0%, #4c1d95 50%, #000000 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    #skills::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08), transparent 40%);
+        animation: pulse 8s ease-in-out infinite;
+    }
+
+    @@keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    .skills-bg-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .shape {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+    }
+
+    .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 5%;
+        animation: float-1 20s infinite;
+    }
+
+    .shape-2 {
+        width: 200px;
+        height: 200px;
+        top: 60%;
+        right: 10%;
+        animation: float-2 15s infinite;
+    }
+
+    .shape-3 {
+        width: 150px;
+        height: 150px;
+        bottom: 15%;
+        left: 15%;
+        animation: float-3 18s infinite;
+    }
+
+    @@keyframes float-1 {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        50% {
+            transform: translate(30px, -30px) rotate(180deg);
+        }
+    }
+
+    @@keyframes float-2 {
+        0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        50% {
+            transform: translate(-40px, 40px) rotate(-180deg);
+        }
+    }
+
+    @@keyframes float-3 {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+            transform: translate(20px, -20px) scale(1.2);
+        }
+    }
+
+    .skills-container {
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    #skills h2 {
+        font-size: 56px;
+        font-weight: 800;
+        color: white;
+        text-align: center;
+        margin-bottom: 20px;
+        background: none;
+        -webkit-text-fill-color: white;
+        animation: fadeInDown 1s ease-out;
+    }
+
+    @@keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #skills h2::after {
+        display: none;
+    }
+
+
+    .skills-subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        margin-bottom: 60px;
+        animation: fadeIn 1s ease-out 0.3s both;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+
+    .skills-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding: 0;
+    }
+
+    .skills-list li {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        padding: 40px 30px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: scaleIn 0.6s ease-out both;
+        cursor: pointer;
+    }
+
+    .skills-list li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .skills-list li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .skills-list li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .skills-list li:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .skills-list li:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .skills-list li:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    @@keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .skills-list li:hover {
+        transform: translateY(-12px) scale(1.03);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+
+    .skills-list li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.3), transparent );
+        transition: left 0.6s ease;
+    }
+
+    .skills-list li:hover::before {
+        left: 100%;
+    }
+
+    .skill-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 32px;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .skills-list li:hover .skill-icon {
+        transform: rotateY(360deg) scale(1.1);
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+
+    .skill-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .skill-description {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .proficiency-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .proficiency-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #fbbf24, #f59e0b);
+        border-radius: 10px;
+        transition: width 1s ease-out 0.5s;
+        width: 0;
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+        .skills-list li:hover .proficiency-fill,
+        .proficiency-fill.animated {
+            width: var(--proficiency);
+        }
+
+ 
+    .experience-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(251, 191, 36, 0.9);
+        color: #1f2937;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+
+    @@media (max-width: 768px) {
+        #skills {
+            padding: 80px 20px;
+        }
+
+            #skills h2 {
+                font-size: 40px;
+            }
+
+        .skills-list {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+            .skills-list li {
+                padding: 30px 25px;
+            }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+        }
+
+        .skill-title {
+            font-size: 20px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        #skills h2 {
+            font-size: 32px;
+        }
+
+        .skills-subtitle {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<section id="skills">
+
+    <div class="skills-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="skills-container">
+        <h2>Technical Skills</h2>
+        <p class="skills-subtitle">Technologies and tools I use to build powerful applications</p>
+
+        <ul class="skills-list">
+            <li>
+                <span class="experience-badge">Expert</span>
+                <div class="skill-icon">🎯</div>
+                <span class="skill-title">ASP.NET Core</span>
+                <p class="skill-description">
+                    Building modern web applications with Razor Pages, MVC architecture, and RESTful APIs.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 95%;"></div>
+                </div>
+            </li>
+
+            <li>
+                <span class="experience-badge">Advanced</span>
+                <div class="skill-icon">📄</div>
+                <span class="skill-title">ASP.NET Web Forms</span>
+                <p class="skill-description">
+                    Maintaining and modernizing enterprise legacy applications with event-driven architecture.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 85%;"></div>
+                </div>
+            </li>
+
+            <li>
+                <span class="experience-badge">Expert</span>
+                <div class="skill-icon">💎</div>
+                <span class="skill-title">C# & .NET</span>
+                <p class="skill-description">
+                    Object-oriented programming, LINQ, async/await, and modern C# features for robust solutions.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 92%;"></div>
+                </div>
+            </li>
+
+            <li>
+                <span class="experience-badge">Expert</span>
+                <div class="skill-icon">🗄️</div>
+                <span class="skill-title">SQL Server</span>
+                <p class="skill-description">
+                    Database design, optimization, complex queries, stored procedures, and performance tuning.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 90%;"></div>
+                </div>
+            </li>
+
+            <li>
+                <span class="experience-badge">Advanced</span>
+                <div class="skill-icon">⚡</div>
+                <span class="skill-title">SQL & T-SQL</span>
+                <p class="skill-description">
+                    Writing efficient queries, joins, indexes, triggers, and stored procedures for data operations.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 88%;"></div>
+                </div>
+            </li>
+
+            <li>
+                <span class="experience-badge">Proficient</span>
+                <div class="skill-icon">🌐</div>
+                <span class="skill-title">Frontend Stack</span>
+                <p class="skill-description">
+                    HTML5, CSS3, JavaScript ES6+, jQuery for creating responsive and interactive user interfaces.
+                </p>
+                <div class="proficiency-bar">
+                    <div class="proficiency-fill" style="--proficiency: 82%;"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<script>
+
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const proficiencyBars = entry.target.querySelectorAll('.proficiency-fill');
+                proficiencyBars.forEach((bar, index) => {
+                    setTimeout(() => {
+                        bar.classList.add('animated');
+                    }, index * 100);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const skillsSection = document.querySelector('#skills');
+    if (skillsSection) {
+        observer.observe(skillsSection);
+    }
+</script>

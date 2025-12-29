@@ -1,0 +1,65 @@
+﻿@model dynamic
+
+@{
+    var project = Model.Project;
+    var index = Model.Index;
+    string[] technologies = ((string)project.Technologies).Split(',')
+        .Select((Func<string, string>)(t => t.Trim()))
+        .ToArray();
+}
+
+<div class="project-card" data-category="web enterprise">
+  
+    <div class="project-number">@index</div>
+
+
+    <h4>@project.Title</h4>
+
+
+    <h5>@project.SystemName</h5>
+
+
+    <p>@project.Description</p>
+
+
+    <div class="project-meta">
+        <p><strong>Technologies:</strong> @project.Technologies</p>
+        <p><strong>Role:</strong> @project.Role</p>
+    </div>
+
+
+    <div class="tech-tags">
+        @foreach (var tech in technologies.Take(5))
+        {
+            <span class="tech-tag">@tech</span>
+        }
+        @if (technologies.Length > 5)
+        {
+            <span class="tech-tag">+@(technologies.Length - 5) more</span>
+        }
+    </div>
+
+    @if (!string.IsNullOrEmpty(project.LiveLink))
+    {
+        <div class="status-badge">Live & Active</div>
+    }
+
+
+    @if (!string.IsNullOrEmpty(project.LiveLink))
+    {
+        <a href="@project.LiveLink" target="_blank" class="project-link">
+            <span>View Live System</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+    }
+    else
+    {
+        <div style="margin-top: 20px; padding: 12px 24px; background: rgba(107, 114, 128, 0.1); color: #6b7280; border-radius: 50px; font-size: 14px; font-weight: 600; display: inline-block;">
+            Internal Project
+        </div>
+    }
+</div>
