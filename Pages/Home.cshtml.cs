@@ -11,6 +11,7 @@ namespace Portfolio.Pages
     public class HomeModel : PageModel
     {
         public List<Project> Projects { get; set; } = new();
+
         [BindProperty]
         public string Name { get; set; }
 
