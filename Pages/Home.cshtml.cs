@@ -32,30 +32,22 @@ namespace Portfolio.Pages
             {
                 new Project
                 {
-                    Title = "Self-Service Module Implementation",
-                    SystemName = "RCMS (Ration Card Management System)",
-                    Description = "Designed and implemented Aadhaar-based self-service functionality allowing citizens to independently update and manage ration card details with secure authentication and validation.",
-                    Technologies = "ASP.NET, C#, SQL Server, Aadhaar Authentication",
-                    Role = "Module design, development, validation logic, and production support",
-                    LiveLink = "https://food.wb.gov.in/Dynamic.aspx?page_id=81"
+                    Title = "Movicare – Healthcare at Home",
+                    SystemName = "Personal Healthcare Platform",
+                    Description = "Designed and developed a healthcare platform that enables patients to book home healthcare services online. Built a responsive landing page, appointment booking, patient registration, secure authentication, administrative dashboard, and implemented Clean Architecture using Dapper, MediatR (CQRS), and Repository Pattern.",
+                    Technologies = "ASP.NET Core Razor Pages, C#, SQL Server, Dapper, MediatR (CQRS), AutoMapper, HTML5, CSS3, Bootstrap, JavaScript",
+                    Role = "Designed the complete application architecture, developed frontend and backend modules, implemented business logic, authentication, SQL Server database, stored procedures, and deployment.",
+                    LiveLink = "https://movicare.in"
                 },
+
                 new Project
                 {
-                    Title = "New RCMS Module Development",
-                    SystemName = "RCMS (Ration Card Management System)",
-                    Description = "Contributed to end-to-end development of a modernized RCMS module using .NET Core, focusing on streamlined application workflows, improved validations, and scalable architecture.",
-                    Technologies = ".NET Core, ASP.NET Core, SQL Server",
-                    Role = "Backend development, workflow implementation, and database handling",
+                    Title = "RCMS (Ration Card Management System)",
+                    SystemName = "Government Enterprise Application",
+                    Description = "Contributed to the development, enhancement, and maintenance of multiple RCMS modules used across West Bengal. Developed new features, enhanced citizen service workflows, implemented Aadhaar authentication, optimized SQL Server stored procedures, and improved application performance.",
+                    Technologies = "ASP.NET Core Razor Pages, ASP.NET Web Forms, C#, SQL Server, Dapper, MediatR (CQRS), AutoMapper, REST API",
+                    Role = "Backend development, business logic implementation, SQL Server optimization, REST API integration, production support, debugging, and deployment.",
                     LiveLink = "https://wbpds.wb.gov.in/rcmsnew/AadhaarAuthenticationLogin/Index"
-                },
-                new Project
-                {
-                    Title = "SKOIL Module Development",
-                    SystemName = "Dealer Profile Management Workflow",
-                    Description = "Developed a multi-stage, workflow-driven dealer profile management system ensuring structured data submission, verification, and escalation logic under the Public Distribution System.",
-                    Technologies = "ASP.NET Core Razor Pages, SQL Server",
-                    Role = "Workflow design, backend development, and stored procedures",
-                    LiveLink = "https://food.wb.gov.in/food/UserLogin/Login.aspx"
                 }
             };  
         }
@@ -95,7 +87,10 @@ namespace Portfolio.Pages
                 ),
                 EnableSsl = true
             };
-
+            Console.WriteLine($"Username: {emailSettings["Username"]}");
+            Console.WriteLine($"Password Exists: {!string.IsNullOrWhiteSpace(emailSettings["AppPassword"])}");
+            Console.WriteLine($"SMTP: {emailSettings["SmtpServer"]}");
+            Console.WriteLine($"Port: {emailSettings["Port"]}");
             await smtp.SendMailAsync(mail);
             TempData["SuccessMessage"] = "Your message has been sent successfully. I will contact you soon.";
 
